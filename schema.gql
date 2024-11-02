@@ -1,4 +1,6 @@
-"""Direct the client to resolve this field locally, either from the cache or local resolvers."""
+"""
+Direct the client to resolve this field locally, either from the cache or local resolvers.
+"""
 directive @client(
   """
   When true, the client will never use the cache for this value. See
@@ -12,7 +14,9 @@ Export this locally resolved field as a variable to be used in the remainder of 
 https://www.apollographql.com/docs/react/essentials/local-state/#using-client-fields-as-variables
 """
 directive @export(
-  """The variable name to export this field as."""
+  """
+  The variable name to export this field as.
+  """
   as: String!
 ) on FIELD
 
@@ -21,9 +25,13 @@ Specify a custom store key for this result. See
 https://www.apollographql.com/docs/react/advanced/caching/#the-connection-directive
 """
 directive @connection(
-  """Specify the store key."""
+  """
+  Specify the store key.
+  """
   key: String!
-  """An array of query argument names to include in the generated custom store key."""
+  """
+  An array of query argument names to include in the generated custom store key.
+  """
   filter: [String!]
 ) on FIELD
 
@@ -1070,8 +1078,18 @@ type UsersPermissionsRole {
   name: String!
   description: String
   type: String
-  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission!]!
-  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser!]!
+  permissions(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): [UsersPermissionsPermission!]!
+  users(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): [UsersPermissionsUser!]!
 }
 
 type UsersPermissionsRoleConnection {
@@ -1411,7 +1429,163 @@ input editComponentPageSectionInput {
   highlight: editComponentPageHighlightInput
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Banner | BannerConnection | BannerAggregator | BannerGroupBy | BannerConnectionId | BannerConnectionCreated_at | BannerConnectionUpdated_at | BannerConnectionImage | BannerConnectionTitle | BannerConnectionSubtitle | BannerConnectionButton | BannerConnectionRibbon | BannerConnectionPublished_at | createBannerPayload | updateBannerPayload | deleteBannerPayload | Category | CategoryConnection | CategoryAggregator | CategoryGroupBy | CategoryConnectionId | CategoryConnectionCreated_at | CategoryConnectionUpdated_at | CategoryConnectionName | CategoryConnectionSlug | createCategoryPayload | updateCategoryPayload | deleteCategoryPayload | Developer | DeveloperConnection | DeveloperAggregator | DeveloperGroupBy | DeveloperConnectionId | DeveloperConnectionCreated_at | DeveloperConnectionUpdated_at | DeveloperConnectionName | DeveloperConnectionSlug | createDeveloperPayload | updateDeveloperPayload | deleteDeveloperPayload | Game | GameConnection | GameAggregator | GameAggregatorSum | GameAggregatorAvg | GameAggregatorMin | GameAggregatorMax | GameGroupBy | GameConnectionId | GameConnectionCreated_at | GameConnectionUpdated_at | GameConnectionName | GameConnectionSlug | GameConnectionShort_description | GameConnectionDescription | GameConnectionPrice | GameConnectionRelease_date | GameConnectionRating | GameConnectionCover | GameConnectionPublisher | createGamePayload | updateGamePayload | deleteGamePayload | Home | updateHomePayload | deleteHomePayload | Platform | PlatformConnection | PlatformAggregator | PlatformGroupBy | PlatformConnectionId | PlatformConnectionCreated_at | PlatformConnectionUpdated_at | PlatformConnectionName | PlatformConnectionSlug | createPlatformPayload | updatePlatformPayload | deletePlatformPayload | Publisher | PublisherConnection | PublisherAggregator | PublisherGroupBy | PublisherConnectionId | PublisherConnectionCreated_at | PublisherConnectionUpdated_at | PublisherConnectionName | PublisherConnectionSlug | createPublisherPayload | updatePublisherPayload | deletePublisherPayload | Recommended | updateRecommendedPayload | deleteRecommendedPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | deleteFilePayload | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | createUserPayload | updateUserPayload | deleteUserPayload | ComponentPageButton | ComponentPageHighlight | ComponentPagePopularGames | ComponentPageRibbon | ComponentPageSection
+union Morph =
+    UsersPermissionsMe
+  | UsersPermissionsMeRole
+  | UsersPermissionsLoginPayload
+  | UserPermissionsPasswordPayload
+  | Banner
+  | BannerConnection
+  | BannerAggregator
+  | BannerGroupBy
+  | BannerConnectionId
+  | BannerConnectionCreated_at
+  | BannerConnectionUpdated_at
+  | BannerConnectionImage
+  | BannerConnectionTitle
+  | BannerConnectionSubtitle
+  | BannerConnectionButton
+  | BannerConnectionRibbon
+  | BannerConnectionPublished_at
+  | createBannerPayload
+  | updateBannerPayload
+  | deleteBannerPayload
+  | Category
+  | CategoryConnection
+  | CategoryAggregator
+  | CategoryGroupBy
+  | CategoryConnectionId
+  | CategoryConnectionCreated_at
+  | CategoryConnectionUpdated_at
+  | CategoryConnectionName
+  | CategoryConnectionSlug
+  | createCategoryPayload
+  | updateCategoryPayload
+  | deleteCategoryPayload
+  | Developer
+  | DeveloperConnection
+  | DeveloperAggregator
+  | DeveloperGroupBy
+  | DeveloperConnectionId
+  | DeveloperConnectionCreated_at
+  | DeveloperConnectionUpdated_at
+  | DeveloperConnectionName
+  | DeveloperConnectionSlug
+  | createDeveloperPayload
+  | updateDeveloperPayload
+  | deleteDeveloperPayload
+  | Game
+  | GameConnection
+  | GameAggregator
+  | GameAggregatorSum
+  | GameAggregatorAvg
+  | GameAggregatorMin
+  | GameAggregatorMax
+  | GameGroupBy
+  | GameConnectionId
+  | GameConnectionCreated_at
+  | GameConnectionUpdated_at
+  | GameConnectionName
+  | GameConnectionSlug
+  | GameConnectionShort_description
+  | GameConnectionDescription
+  | GameConnectionPrice
+  | GameConnectionRelease_date
+  | GameConnectionRating
+  | GameConnectionCover
+  | GameConnectionPublisher
+  | createGamePayload
+  | updateGamePayload
+  | deleteGamePayload
+  | Home
+  | updateHomePayload
+  | deleteHomePayload
+  | Platform
+  | PlatformConnection
+  | PlatformAggregator
+  | PlatformGroupBy
+  | PlatformConnectionId
+  | PlatformConnectionCreated_at
+  | PlatformConnectionUpdated_at
+  | PlatformConnectionName
+  | PlatformConnectionSlug
+  | createPlatformPayload
+  | updatePlatformPayload
+  | deletePlatformPayload
+  | Publisher
+  | PublisherConnection
+  | PublisherAggregator
+  | PublisherGroupBy
+  | PublisherConnectionId
+  | PublisherConnectionCreated_at
+  | PublisherConnectionUpdated_at
+  | PublisherConnectionName
+  | PublisherConnectionSlug
+  | createPublisherPayload
+  | updatePublisherPayload
+  | deletePublisherPayload
+  | Recommended
+  | updateRecommendedPayload
+  | deleteRecommendedPayload
+  | UploadFile
+  | UploadFileConnection
+  | UploadFileAggregator
+  | UploadFileAggregatorSum
+  | UploadFileAggregatorAvg
+  | UploadFileAggregatorMin
+  | UploadFileAggregatorMax
+  | UploadFileGroupBy
+  | UploadFileConnectionId
+  | UploadFileConnectionCreated_at
+  | UploadFileConnectionUpdated_at
+  | UploadFileConnectionName
+  | UploadFileConnectionAlternativeText
+  | UploadFileConnectionCaption
+  | UploadFileConnectionWidth
+  | UploadFileConnectionHeight
+  | UploadFileConnectionFormats
+  | UploadFileConnectionHash
+  | UploadFileConnectionExt
+  | UploadFileConnectionMime
+  | UploadFileConnectionSize
+  | UploadFileConnectionUrl
+  | UploadFileConnectionPreviewUrl
+  | UploadFileConnectionProvider
+  | UploadFileConnectionProvider_metadata
+  | deleteFilePayload
+  | UsersPermissionsPermission
+  | UsersPermissionsRole
+  | UsersPermissionsRoleConnection
+  | UsersPermissionsRoleAggregator
+  | UsersPermissionsRoleGroupBy
+  | UsersPermissionsRoleConnectionId
+  | UsersPermissionsRoleConnectionName
+  | UsersPermissionsRoleConnectionDescription
+  | UsersPermissionsRoleConnectionType
+  | createRolePayload
+  | updateRolePayload
+  | deleteRolePayload
+  | UsersPermissionsUser
+  | UsersPermissionsUserConnection
+  | UsersPermissionsUserAggregator
+  | UsersPermissionsUserGroupBy
+  | UsersPermissionsUserConnectionId
+  | UsersPermissionsUserConnectionCreated_at
+  | UsersPermissionsUserConnectionUpdated_at
+  | UsersPermissionsUserConnectionUsername
+  | UsersPermissionsUserConnectionEmail
+  | UsersPermissionsUserConnectionProvider
+  | UsersPermissionsUserConnectionConfirmed
+  | UsersPermissionsUserConnectionBlocked
+  | UsersPermissionsUserConnectionRole
+  | createUserPayload
+  | updateUserPayload
+  | deleteUserPayload
+  | ComponentPageButton
+  | ComponentPageHighlight
+  | ComponentPagePopularGames
+  | ComponentPageRibbon
+  | ComponentPageSection
 
 input InputID {
   id: ID!
@@ -1431,34 +1605,135 @@ type AdminUser {
 
 type Query {
   banner(id: ID!, publicationState: PublicationState): Banner
-  banners(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Banner!]!
-  bannersConnection(sort: String, limit: Int, start: Int, where: JSON): BannerConnection
+  banners(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+    publicationState: PublicationState
+  ): [Banner!]!
+  bannersConnection(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): BannerConnection
   category(id: ID!, publicationState: PublicationState): Category
-  categories(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Category!]!
-  categoriesConnection(sort: String, limit: Int, start: Int, where: JSON): CategoryConnection
+  categories(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+    publicationState: PublicationState
+  ): [Category!]!
+  categoriesConnection(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): CategoryConnection
   developer(id: ID!, publicationState: PublicationState): Developer
-  developers(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Developer!]!
-  developersConnection(sort: String, limit: Int, start: Int, where: JSON): DeveloperConnection
+  developers(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+    publicationState: PublicationState
+  ): [Developer!]!
+  developersConnection(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): DeveloperConnection
   game(id: ID!, publicationState: PublicationState): Game
-  games(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Game!]!
-  gamesConnection(sort: String, limit: Int, start: Int, where: JSON): GameConnection
+  games(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+    publicationState: PublicationState
+  ): [Game!]!
+  gamesConnection(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): GameConnection
   home(publicationState: PublicationState): Home
   platform(id: ID!, publicationState: PublicationState): Platform
-  platforms(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Platform!]!
-  platformsConnection(sort: String, limit: Int, start: Int, where: JSON): PlatformConnection
+  platforms(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+    publicationState: PublicationState
+  ): [Platform!]!
+  platformsConnection(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): PlatformConnection
   publisher(id: ID!, publicationState: PublicationState): Publisher
-  publishers(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [Publisher!]!
-  publishersConnection(sort: String, limit: Int, start: Int, where: JSON): PublisherConnection
+  publishers(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+    publicationState: PublicationState
+  ): [Publisher!]!
+  publishersConnection(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): PublisherConnection
   recommended(publicationState: PublicationState): Recommended
-  files(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UploadFile!]!
-  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
+  files(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+    publicationState: PublicationState
+  ): [UploadFile!]!
+  filesConnection(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): UploadFileConnection
   role(id: ID!, publicationState: PublicationState): UsersPermissionsRole
-  """Retrieve all the existing roles. You can't apply filters on this query."""
-  roles(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsRole!]!
-  rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+    publicationState: PublicationState
+  ): [UsersPermissionsRole!]!
+  rolesConnection(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): UsersPermissionsRoleConnection
   user(id: ID!, publicationState: PublicationState): UsersPermissionsUser
-  users(sort: String, limit: Int, start: Int, where: JSON, publicationState: PublicationState): [UsersPermissionsUser!]!
-  usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
+  users(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+    publicationState: PublicationState
+  ): [UsersPermissionsUser!]!
+  usersConnection(
+    sort: String
+    limit: Int
+    start: Int
+    where: JSON
+  ): UsersPermissionsUserConnection
   me: UsersPermissionsMe
 }
 
@@ -1485,46 +1760,88 @@ type Mutation {
   deletePublisher(input: deletePublisherInput): deletePublisherPayload
   updateRecommended(input: updateRecommendedInput): updateRecommendedPayload
   deleteRecommended: deleteRecommendedPayload
-  """Delete one file"""
+  """
+  Delete one file
+  """
   deleteFile(input: deleteFileInput): deleteFilePayload
-  """Create a new role"""
+  """
+  Create a new role
+  """
   createRole(input: createRoleInput): createRolePayload
-  """Update an existing role"""
+  """
+  Update an existing role
+  """
   updateRole(input: updateRoleInput): updateRolePayload
-  """Delete an existing role"""
+  """
+  Delete an existing role
+  """
   deleteRole(input: deleteRoleInput): deleteRolePayload
-  """Create a new user"""
+  """
+  Create a new user
+  """
   createUser(input: createUserInput): createUserPayload
-  """Update an existing user"""
+  """
+  Update an existing user
+  """
   updateUser(input: updateUserInput): updateUserPayload
-  """Delete an existing user"""
+  """
+  Delete an existing user
+  """
   deleteUser(input: deleteUserInput): deleteUserPayload
-  upload(refId: ID, ref: String, field: String, source: String, file: Upload!): UploadFile!
-  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
+  upload(
+    refId: ID
+    ref: String
+    field: String
+    source: String
+    file: Upload!
+  ): UploadFile!
+  multipleUpload(
+    refId: ID
+    ref: String
+    field: String
+    source: String
+    files: [Upload]!
+  ): [UploadFile]!
   updateFileInfo(id: ID!, info: FileInfoInput!): UploadFile!
   login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
   register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
   forgotPassword(email: String!): UserPermissionsPasswordPayload
-  resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
+  resetPassword(
+    password: String!
+    passwordConfirmation: String!
+    code: String!
+  ): UsersPermissionsLoginPayload
   emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
 }
 
-"""The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf)."""
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
 scalar JSON
 
-"""A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar."""
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
 scalar DateTime
 
-"""A time string with format: HH:mm:ss.SSS"""
+"""
+A time string with format: HH:mm:ss.SSS
+"""
 scalar Time
 
-"""A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar."""
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
 scalar Date
 
-"""The `Long` scalar type represents 52-bit integers"""
+"""
+The `Long` scalar type represents 52-bit integers
+"""
 scalar Long
 
-"""The `Upload` scalar type represents a file upload."""
+"""
+The `Upload` scalar type represents a file upload.
+"""
 scalar Upload
 
 enum CacheControlScope {
