@@ -3,63 +3,48 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { ENUM_GAME_RATING } from './globalTypes'
-
 // ====================================================
-// GraphQL query operation: QueryGameBySlug
+// GraphQL query operation: QueryGames
 // ====================================================
 
-export interface QueryGameBySlug_games_gallery {
+export interface QueryGames_games_cover {
   __typename: 'UploadFile'
-  src: string
-  label: string | null
+  url: string
 }
 
-export interface QueryGameBySlug_games_cover {
-  __typename: 'UploadFile'
-  src: string
-}
-
-export interface QueryGameBySlug_games_developers {
+export interface QueryGames_games_developers {
   __typename: 'Developer'
   name: string
 }
 
-export interface QueryGameBySlug_games_publisher {
-  __typename: 'Publisher'
-  name: string
-}
-
-export interface QueryGameBySlug_games_categories {
-  __typename: 'Category'
-  name: string
-}
-
-export interface QueryGameBySlug_games_platforms {
-  __typename: 'Platform'
-  name: string
-}
-
-export interface QueryGameBySlug_games {
+export interface QueryGames_games {
   __typename: 'Game'
+  id: string
   name: string
-  short_description: string
-  description: string
-  price: number
-  rating: ENUM_GAME_RATING | null
-  release_date: any | null
-  gallery: QueryGameBySlug_games_gallery[]
-  cover: QueryGameBySlug_games_cover | null
-  developers: QueryGameBySlug_games_developers[]
-  publisher: QueryGameBySlug_games_publisher | null
-  categories: QueryGameBySlug_games_categories[]
-  platforms: QueryGameBySlug_games_platforms[]
-}
-
-export interface QueryGameBySlug {
-  games: QueryGameBySlug_games[]
-}
-
-export interface QueryGameBySlugVariables {
   slug: string
+  cover: QueryGames_games_cover | null
+  developers: QueryGames_games_developers[]
+  price: number
+}
+
+export interface QueryGames_gamesConnection_values {
+  __typename: 'Game'
+  id: string
+}
+
+export interface QueryGames_gamesConnection {
+  __typename: 'GameConnection'
+  values: (QueryGames_gamesConnection_values | null)[] | null
+}
+
+export interface QueryGames {
+  games: QueryGames_games[]
+  gamesConnection: QueryGames_gamesConnection | null
+}
+
+export interface QueryGamesVariables {
+  limit?: number | null
+  start?: number | null
+  where?: any | null
+  sort?: string | null
 }
