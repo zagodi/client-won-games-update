@@ -1,65 +1,46 @@
-import styled, { css, DefaultTheme } from 'styled-components'
-import media from 'styled-media-query'
+import Link from 'next/link'
+import { signOut } from 'next-auth/client'
+import {
+  AccountCircle,
+  CreditCard,
+  ExitToApp,
+  FormatListBulleted
+} from '@styled-icons/material-outlined'
 
-export const Nav = styled.nav`
-  ${({ theme }) => css`
-    display: flex;
-    border-bottom: 0.1rem solid ${theme.colors.lightGray};
+import * as S from './styles'
 
-    ${media.greaterThan('medium')`
-      flex-direction: column;
-      border: 0;
-
-      a:not(:last-child) {
-        border-bottom: 0.1rem solid ${theme.colors.lightGray};
-      }
-    `}
-  `}
-`
-
-const linkModifiers = {
-  default: (theme: DefaultTheme) => css`
-    background: ${theme.colors.white};
-    color: ${theme.colors.black};
-  `,
-
-  active: (theme: DefaultTheme) => css`
-    background: ${theme.colors.primary};
-    color: ${theme.colors.white};
-  `
+export type ProfileMenuProps = {
+  activeLink?: '/profile/me' | '/profile/cards' | '/profile/orders' | string
 }
 
-type LinkProps = {
-  isActive?: boolean
-}
+const ProfileMenu = ({ activeLink }: ProfileMenuProps) => (
+  <S.Nav>
+    <Link href="/profile/me" passHref>
+      <S.Link isActive={activeLink === '/profile/me'} title="My profile">
+        <AccountCircle size={24} />
+        <span>My profile</span>
+      </S.Link>
+    </Link>
 
-export const Link = styled.a<LinkProps>`
-  ${({ theme, isActive }) => css`
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    padding: ${theme.spacings.xsmall} ${theme.spacings.small};
-    transition: background, color, ${theme.transition.default};
+    <Link href="/profile/cards" passHref>
+      <S.Link isActive={activeLink === '/profile/cards'} title="My cards">
+        <CreditCard size={24} />
+        <span>My cards</span>
+      </S.Link>
+    </Link>
 
-    &:hover {
-      background: ${theme.colors.primary};
-      color: ${theme.colors.white};
-    }
+    <Link href="/profile/orders" passHref>
+      <S.Link isActive={activeLink === '/profile/orders'} title="My orders">
+        <FormatListBulleted size={24} />
+        <span>My orders</span>
+      </S.Link>
+    </Link>
 
-    > span {
-      margin-left: ${theme.spacings.xsmall};
-    }
+    <S.Link role="button" onClick={() => signOut()}>
+      <ExitToApp size={24} title="Sign out" />
+      <span>Sign out</span>
+    </S.Link>
+  </S.Nav>
+)
 
-    ${media.lessThan('medium')`
-      justify-content: center;
-      flex: 1;
-
-      > span {
-        display: none;
-      }
-    `}
-
-    ${!isActive && linkModifiers.default(theme)};
-    ${isActive && linkModifiers.active(theme)};
-  `}
-`
+export default ProfileMenu
